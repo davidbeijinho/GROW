@@ -203,7 +203,7 @@ function DashboardCtrl($scope, $http, $location) {
 
 
 
- var chart = d3.select("#chart");
+ //var chart = d3.select("#chart");
 
 
 
@@ -217,26 +217,36 @@ function DashboardCtrl($scope, $http, $location) {
    $scope.count++;
    while ($scope.dadoss.length> $scope.LIMITE)
     $scope.dadoss.splice(0, 1);
-  $scope.$watch( $scope.dadoss.length, function(newValue, oldValue) {
+  //$scope.$watch( $scope.dadoss.length, function(newValue, oldValue) {
 
    // console.log("ola");
  //   if ($scope.dadoss.length>=1)
-  //   $scope.graph.render();
+     $scope.graph.render();
 
- },true);
+ //},true);
 });
 
-  // $scope.graph = new Rickshaw.Graph( {
-  //   element: document.querySelector("#chart"), 
-  //   width: 500, 
-  //   height: 400, 
-  //   series: [{
-  //     color: 'steelblue',
-  //     data:  $scope.dadoss
-  //   }]
-  // });
+  $scope.graph = new Rickshaw.Graph( {
+    element: document.querySelector("#chart"), 
+    width: 500, 
+    height: 400, 
+     renderer: 'line',
+    series: [{
+      color: 'steelblue',
+      data:  $scope.dadoss
+      
+    }]
+  });
+ //$scope.axes = new Rickshaw.Graph.Axis.Time( { graph:  $scope.graph } );
 
-
+// $scope.y_axis = new Rickshaw.Graph.Axis.Y( {
+//         graph: $scope.graph,
+//         orientation: 'left',
+//         tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+//         element: document.getElementById('y_axis'),
+// } );
+ 
+ //$scope.x_axis = new Rickshaw.Graph.Axis.Time( { graph:  $scope.graph } );
 
 //$scope.graph.render();
 //$scope.$watch( $scope.dadoss.length, function(newValue, oldValue) {
@@ -247,7 +257,7 @@ function DashboardCtrl($scope, $http, $location) {
   // },true); // initialize the watch
 
 $scope.desenha = function () {
-  $scope.graph.render();
+  //$scope.graph.render();
 };
 
 $scope.addTodo = function () {
@@ -258,12 +268,12 @@ $scope.addTodo = function () {
   $scope.val_x = '';
   $scope.val_y = '';
     //$scope.$digest();
-    $scope.$watch( $scope.dadoss.length, function(newValue, oldValue) {
+   // $scope.$watch( $scope.dadoss.length, function(newValue, oldValue) {
   //alert("oiii");
-  console.log("ola");
+ // console.log("ola");
  // $scope.graph.render();
      //scope.greeting = scope.salutation + ' ' + scope.name + '!';
-   },true);
+ //  },true);
   };
 }
 

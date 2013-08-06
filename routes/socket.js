@@ -1,7 +1,7 @@
 
 var com = require("serialport");
 var gerador= com.SerialPort;
-var serialPort = new gerador("/dev/ttyUSB0", {
+var serialPort = new gerador("/dev/cu.usbserial-A900F4PE", {
   baudrate: 9600
   ,    parser: com.parsers.readline('\r\n')
 },true);
