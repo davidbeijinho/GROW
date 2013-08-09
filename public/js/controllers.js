@@ -9,9 +9,10 @@ function MenuCtrl($scope, $http, $location, socket) {
   //           { x: 2, y: 38 }, 
   //           { x: 3, y: 30 }, 
   //           { x: 4, y: 32 } ];
-
-
-
+var user={};
+//user.username="jose";
+$scope.user=user;
+//$scope.logado=true;
   $scope.ensaios = [ ];
   $scope.probes = [
   {name:'Probe-1' , id:0 , livre:true },
@@ -22,7 +23,7 @@ function MenuCtrl($scope, $http, $location, socket) {
   $scope.messages = [];
 
   $scope.users ;
-  $scope.user ="";
+  //$scope.user ="";
   $scope.name="";
   $scope.socket=socket;
   $scope.coiso="eu venho do menu";
@@ -159,7 +160,7 @@ function AmbienteCtrl($scope, $http, $location) {
 
 }
 function EnsaiosCtrl($scope, $http, $location) {
-  $scope.user="josei";
+  //$scope.user="josei";
 
 
 
@@ -169,7 +170,7 @@ function EnsaiosCtrl($scope, $http, $location) {
     var  ensaio_aux={
      nome:  $scope.nome
      ,probe: $scope.probe
-     ,user: $scope.user
+     ,user: $scope.user.username
    };
    $scope.socket.emit('AddEnsaio', ensaio_aux, function (result) 
    {
@@ -290,6 +291,70 @@ function ReportsCtrl($scope, $http, $location) {
    $http.post('/api/post', $scope.form).
      success(function(data) {
        $location.path('/');
+     });
+};*/
+}
+
+function LoginCtrl($scope, $http, $location) {
+
+
+
+  $scope.entrar = function () 
+  {
+  if ( ($scope.Iusername=="grow")&&($scope.Ipassword=="123123") )
+  {
+   $scope.user.logado=true;
+   $scope.user.username=$scope.Iusername;
+   $location.path('/');  
+  }
+  else
+  {
+     $scope.erroLog=true;
+     $scope.erroLogin="Problemas ao fazer login";
+  }
+  
+   };
+
+
+/* $scope.form = {};
+ $scope.submitPost = function () {
+   $http.post('/api/post', $scope.form).
+     success(function(data) {
+       $location.path('/');
+     });
+};*/
+}
+function LogoutCtrl($scope, $http, $location) {
+$scope.user.logado=false;
+  $location.path('/');
+/* $scope.form = {};
+ $scope.submitPost = function () {
+   $http.post('/api/post', $scope.form).
+     success(function(data) {
+     
+     });
+};*/
+}
+
+
+function PerfilCtrl($scope, $http, $location) {
+
+/* $scope.form = {};
+ $scope.submitPost = function () {
+   $http.post('/api/post', $scope.form).
+     success(function(data) {
+     
+     });
+};*/
+}
+
+function EstufasCtrl($scope, $http, $location) {
+
+/* $scope.form = {};
+ $scope.submitPost = function () {
+   $http.post('/api/post', $scope.form).
+     success(function(data) {
+     
      });
 };*/
 }

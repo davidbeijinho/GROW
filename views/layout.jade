@@ -21,4 +21,18 @@ html(ng-app="myApp")
            a(href="/dashboard") Dashboard
          li(ng-class="{active:isActive('/reports')}")
            a(href="/reports") Reports
+      ul.nav.navbar-nav.pull-right
+        li(ng-hide="user.logado")
+           a(href="/login") Login
+        li(ng-show="user.logado")
+          a(data-toggle="dropdown").dropdown-toggle {{user.username}} 
+            span.caret
+          ul.dropdown-menu.pull-right
+            li
+              a(href="/perfil") Perfil
+            li
+              a(href="/estufas") Estufas
+            li.divider
+            li
+              a(href="/logout") Logout
     block body

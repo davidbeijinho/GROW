@@ -34,9 +34,15 @@ if ('development' == app.get('env')) {
 
 /*  ROUTES */
 app.get('/', routes.index);
+
+app.get('/login', routes.index);
+app.get('/logout', routes.index);
+
+app.get('/perfil', routes.index);
+app.get('/estufas', routes.index);
+
 app.get('/ambiente', routes.index);
 app.get('/ensaios', routes.index);
-
 app.get('/rega', routes.index);
 app.get('/dashboard', routes.index);
 app.get('/reports', routes.index);
